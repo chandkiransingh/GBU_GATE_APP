@@ -1,13 +1,14 @@
 package com.ck.restapivolley;
 
-
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -27,11 +28,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
-public class Visitors extends AppCompatActivity {
+public class Visitors extends Activity {
 
-    String sessionId;
+    private static String sessionId;
     Button add_visitor;
     private String TAG = Visitors.class.getSimpleName();
 
@@ -47,10 +47,21 @@ public class Visitors extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_visitors);
         add_visitor = findViewById(R.id.add_visitor);
         sessionId = getIntent().getStringExtra("SESSION_ID");
-        sessionId = sessionId.replaceAll("^\"|\"$", "");
+
+        try {
+            sessionId = sessionId.replaceAll("^\"|\"$", "");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         contactList = new ArrayList<>();
         lv = (ListView) findViewById(R.id.list);
         new GetContacts().execute();
@@ -64,11 +75,6 @@ public class Visitors extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
 
     /**
      * Async task class to get json by making HTTP call
@@ -99,11 +105,12 @@ public class Visitors extends AppCompatActivity {
                 try {
                     JSONArray jsonarray = new JSONArray(jsonStr);
                     // Getting JSON Array node
-                    String visit_date,card_number,name,address,mobile,number_plate,destination,purpose,intime,outtime;
+                    String visit_date,card_number,name,address,mobile,number_plate,destination,purpose,intime,outtime,id;
                     // looping through All Contacts
                     for (int i = 0; i < jsonarray.length(); i++) {
 
                         JSONObject JO = jsonarray.getJSONObject(i);
+                        id = JO.getString("id");
                         visit_date = JO.getString("visit_date");
                         card_number = JO.getString("card_number");
                         name = JO.getString("name");
@@ -115,11 +122,11 @@ public class Visitors extends AppCompatActivity {
                         intime = JO.getString("intime");
                         outtime = JO.getString("outtime");
 
-
                         // tmp hash map for single contact
                         HashMap<String, String> contact = new HashMap<>();
 
                         // adding each child node to HashMap key => value
+                        contact.put("id",id);
                         contact.put("visit_date",visit_date);
                         contact.put("card_number",card_number);
                         contact.put("name",name);
@@ -159,9 +166,7 @@ public class Visitors extends AppCompatActivity {
                                 .show();
                     }
                 });
-
             }
-
             return null;
         }
 
@@ -180,6 +185,5 @@ public class Visitors extends AppCompatActivity {
                     new int[]{R.id.visit_date, R.id.card_number, R.id.name, R.id.address, R.id.mobile, R.id.number_plate, R.id.destination, R.id.purpose, R.id.intime, R.id.outtime});
             lv.setAdapter(adapter);
         }
-
     }
 }

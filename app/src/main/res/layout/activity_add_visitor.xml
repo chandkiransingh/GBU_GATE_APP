@@ -6,76 +6,133 @@
     android:orientation="vertical"
     tools:context=".AddVisitor">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fill out all the necessary details - "
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#000000"/>
+
     <EditText
         android:id="@+id/card_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="card_number"/>
-
-
+        android:ems="20"
+        android:layout_gravity="center"
+        android:hint="card_number"
+        android:layout_marginTop="10dp"
+        android:inputType="number"/>
 
     <EditText
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:ems="20"
+        android:layout_gravity="center"
         android:hint="name"/>
-
 
     <EditText
         android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:ems="20"
+        android:layout_gravity="center"
         android:hint="address"/>
-
 
     <EditText
         android:id="@+id/mobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="mobile"/>
-
+        android:ems="20"
+        android:layout_gravity="center"
+        android:hint="mobile"
+        android:inputType="phone"/>
 
     <EditText
         android:id="@+id/number_plate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:ems="20"
+        android:layout_gravity="center"
         android:hint="number_plate"/>
-
 
     <EditText
         android:id="@+id/destination"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:ems="20"
+        android:layout_gravity="center"
         android:hint="destination"/>
-
 
     <EditText
         android:id="@+id/purpose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:ems="20"
+        android:layout_gravity="center"
         android:hint="purpose"/>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/intime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="5"
+        android:layout_gravity="left"
+        android:hint="intime"/>
 
+        <Button
+            android:id="@+id/inndate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="set indate"/>
+
+        <Button
+            android:id="@+id/inntime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="set intime"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/outtime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:ems="5"
+        android:layout_gravity="left"
         android:hint="outtime"/>
 
+
+        <Button
+            android:id="@+id/outtdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="set outdate"/>
+
+        <Button
+            android:id="@+id/outttime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="set outtime"/>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/submitv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Submit" />
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_corners_blue"
+        android:text="Submit"
+        android:textColor="#FFFFFF"/>
 
 </LinearLayout>
