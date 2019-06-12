@@ -220,7 +220,7 @@ public class AddVisitor extends Activity {
         public void onTimeSet(TimePicker view, int hour, int minute) {
             // store the data in one string and set it to text
             String time1 = String.valueOf(hour) + ":" + String.valueOf(minute);
-            intime.append("T"+time1+":00Z");
+            intime.append("T"+time1);
         }
     };
 
@@ -244,7 +244,7 @@ public class AddVisitor extends Activity {
         public void onTimeSet(TimePicker view, int hour, int minute) {
             // store the data in one string and set it to text
             String time1 = String.valueOf(hour) + ":" + String.valueOf(minute);
-            outtime.append("T"+time1+":00Z");
+            outtime.append("T"+time1);
         }
     };
 }

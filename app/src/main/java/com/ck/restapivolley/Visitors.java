@@ -34,7 +34,6 @@ public class Visitors extends Activity {
     private static String sessionId;
     Button add_visitor;
     private String TAG = Visitors.class.getSimpleName();
-
     private ProgressDialog pDialog;
     private ListView lv;
 
