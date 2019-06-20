@@ -3,12 +3,14 @@ package com.ck.restapivolley;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -31,6 +33,15 @@ public class ServerLogin extends Activity {
     String id,password;
     String token;
     final HashMap<String,String> hmap = new HashMap<String,String>();
+    RelativeLayout rellay1;
+
+    Handler handler = new Handler();
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            rellay1.setVisibility(View.VISIBLE);
+        }
+    };
 
 
     @Override
@@ -43,6 +54,8 @@ public class ServerLogin extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_server_login);
+        rellay1 = (RelativeLayout) findViewById(R.id.rellay1);
+        handler.postDelayed(runnable, 2000); //2000 is the timeout for the splash
         user = findViewById(R.id.user);
         pass = findViewById(R.id.pass);
         submit = findViewById(R.id.submit);

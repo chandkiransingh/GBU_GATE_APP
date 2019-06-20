@@ -36,11 +36,8 @@ public class Visitors extends Activity {
     private String TAG = Visitors.class.getSimpleName();
     private ProgressDialog pDialog;
     private ListView lv;
-
     // URL to get contacts JSON
-
     private static String url = "https://gateapi.vishalpandey.xyz/visitor/?access_token=";
-
     ArrayList<HashMap<String, String>> contactList;
 
     @Override
@@ -88,16 +85,13 @@ public class Visitors extends Activity {
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
             pDialog.show();
-
         }
 
         @Override
         protected Void doInBackground(Void... arg0) {
             HttpHandler sh = new HttpHandler();
-
             // Making a request to url and getting response
             String jsonStr = sh.makeServiceCall(url+sessionId);
-
             Log.e(TAG, "Response from url: " + jsonStr);
 
             if (jsonStr != null) {
